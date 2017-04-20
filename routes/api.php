@@ -16,3 +16,20 @@ use Illuminate\Http\Request;
 Route::get('/user', function (Request $request) {
     return $request->user();
 })->middleware('auth:api');
+
+
+//allows session states to work across all controllers
+Route::group(['middleware' => ['web']], function(){
+	Route::get('/', function () {
+    return "<a href=\"login\">Project</a>";
+	});
+
+	Auth::routes();
+	Route::get('/loginAttempt', 'Auth\LoginController@loginAttempt');
+	Route::get('/home', 'HomeController@index');
+
+
+	//Restful controller for courses
+	Route::resource('course', 'CourseController');
+	Route::resource('course.module', 'ModuleController');
+});
