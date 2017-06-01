@@ -28,7 +28,7 @@
 		    	<div class="col-md-6">
 			        <div class="dropdown">
 			            <a href="course/{{ $course->courseName }}" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
-			                {{ $course->courseName }} <span class="caret"></span><span class="glyphicon glyphicon-user"></span>
+			                {{ $course->courseName }} <span class="caret"></span><span class="glyphicon glyphicon-folder-close"></span>
 			            </a>
 
 			            <ul class="dropdown-menu">

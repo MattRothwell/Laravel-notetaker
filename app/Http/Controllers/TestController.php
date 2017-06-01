@@ -49,17 +49,15 @@ class TestController extends Controller
         if (Auth::check()) 
         {
             $modules = Modules::where('courseID', $request->id)->get();
-
             $moduleID = [];
             foreach ($modules as $module) {
                 $moduleID = array_prepend($moduleID, $module->id);
             }
-            $subjects = Subject::whereIn('moduleID', $moduleID)->get();
-            
+            $subjects = Subject::whereIn('moduleID', $moduleID)->take($request->amount)->get();
+
             return view('test.created', ['subjects' => $subjects]);
         }
         return redirect()->action('HomeController@index');
-
     }
 
     /**

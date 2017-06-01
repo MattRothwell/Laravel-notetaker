@@ -5,7 +5,9 @@
 <div class="container">
     <div class="row">
         <div class="col-md-8">
+            <div col-sm-6> 
             <div class="panel panel-default">
+
                 <div class="panel-heading">Current Courses</div>
                 
                 <div class="panel-body">
@@ -15,6 +17,9 @@
                 </div>
                
             </div>
+            <a role="button" class="btn btn-primary btn-md" href="{{ action('CourseController@find') }}">Find a course</a>
+        &nbsp;
+    </div> 
         </div>
     </div>
 </div>

@@ -22,5 +22,6 @@ class Modules extends Model
                     ->orWhere("moduleCode", "LIKE", "%$keyword%");
             });
         }
+        return $query;
     }
 }

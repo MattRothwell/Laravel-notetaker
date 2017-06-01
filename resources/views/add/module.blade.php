@@ -21,7 +21,7 @@
 					{!! Form::label('text', 'Course', ['class' => 'control-label pull-right']) !!}
 				</div>
 				<div class="col-sm-6 center-block">
-					{!! Form::text( 'course', $courses->courseName, ['class' => 'form-control', 'readonly' => 'true']) !!}
+					{!! Form::text( 'course', $curCourse, ['class' => 'form-control', 'readonly' => 'true']) !!}
 				</div>
 				<div class="col-sm-6 center-block"></div>
 			</div>

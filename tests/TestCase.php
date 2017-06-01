@@ -22,4 +22,13 @@ abstract class TestCase extends Illuminate\Foundation\Testing\TestCase
 
         return $app;
     }
+
+    
+    public function it_validates_login() {
+
+    $this->visit('/login')
+        ->press('Login')
+        ->see('The password field is required')
+        ->see('The email field is required');
+}
 }

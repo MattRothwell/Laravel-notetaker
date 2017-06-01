@@ -3,13 +3,12 @@
 @section('main')
 <div class="container">
 	<ul class="list-unstyled">
-		<li><a href="{{ url('/show') }}">Generate Random Test</a></li>
+		<li><a href="{{ url('#') }}">Generate Random Test</a></li>
 		<h5>Select a course below to create a more precise test for you!</h5>
 
 		{!! Form::open(array('route' => 'Tests.store')) !!}
 		@foreach($courses as $course)
-			<li><a href="{{ url('/course/'.$course->courseName.'/test') }}">{{ $course->courseName }}</a></li>
-  			<button type="button" class="btn btn-info btn-md" data-toggle="modal" data-id="{{ $course->id }}" data-target="#testModal">{{ $course->courseName }}</button>
+  			<a class="btn btn-info btn-md" data-toggle="modal" data-id="{{ $course->id }}" data-target="#testModal">{{ $course->courseName }}</a>
 		@endforeach
 	</ul>
 

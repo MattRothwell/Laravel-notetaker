@@ -20,7 +20,7 @@
     <input name="_method" type="hidden" value="PUT">
     <div class="col-md-4 col-sm-6 col-xs-12">
       <div class="text-center">
-      <img src="/storage/{{ $user->profilepic}}/{{ $user->profilepic}}" height ='200' />
+      <img src="/storage/{{ $user->profilepic}}" height ='200' />
         <h6>Upload a different photo...</h6>
 
 

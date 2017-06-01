@@ -5,15 +5,15 @@
 | Web Routes
 |--------------------------------------------------------------------------
 |
-| Here is where you can register web routes for your application. These
-| routes are loaded by the RouteServiceProvider within a group which
-| contains the "web" middleware group. Now create something great!
+| This file is where you may define all of the routes that are handled
+| by your application. Just tell Laravel the URIs it should respond
+| to using a Closure or controller method. Build something great!
 |
 */
 Auth::routes();
 
 Route::get('/', function () {
-    return "<a href=\"login\">Project</a>";
+    return view('welcome');
 });
 
 Route::post('course/subscribe', 'CourseController@subscribe');
@@ -39,5 +39,7 @@ Route::resource('Tests', 'TestController');
 	'auth' => 'Auth\AuthController',
 	'password' => 'Auth\PasswordController',
 });*/
+
+
 
 

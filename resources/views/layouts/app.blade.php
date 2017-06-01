@@ -13,7 +13,7 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>{{ config('app.name', 'Smart My Revision') }}</title>
+    <title>{{ config('app.name', 'Smart Your Revision') }}</title>
 
     <!-- Styles -->
     <link href="/css/app.css" rel="stylesheet">
@@ -61,7 +61,7 @@
 
                     <!-- Branding Image -->
                     <a class="navbar-brand" href="{{ url('/home') }}">
-                        {{ config('app.name', 'Smart My Revision') }}
+                        {{ config('app.name', 'Smart Your Revision') }}
                     </a>
                 </div>
 
@@ -75,9 +75,7 @@
                             <li>
                                 <a href="{{url('/Tests') }}"> Test Yourself </a>
                             </li>
-                            <li>
-                                <a href="{{url('/Tasks') }}"> Your Tasks </a>
-                            </li>
+
                         </ul>
                     @endif
                     <ul class="nav navbar-nav">

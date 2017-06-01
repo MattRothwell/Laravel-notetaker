@@ -11,14 +11,11 @@
 	{!! Form::open(array('route' => 'course.store')) !!}
 		{!! Form::token() !!}
 		{{ Form::button('Subscribe to Course', array('class' => 'btn')) }}
-		<div class="row col-lg-5">
-			<button type="button" class="btn btn-warning" id="subscribe">sub</button>
-		</div>
-
 	{!! Form::close()!!}
 
-
-
+	@if($modules == '[]')
+		<p>No modules Currently available</p>
+	@endif
 
 	@foreach($modules as $module)
 	<a href="{{ url('course/'.$course.'/module/'.$module->moduleName.'') }}" class="btn btn-info" role="button" value="{{ $module->id}} ">{{ $module->moduleName." | ".$module->moduleCode }}</a>

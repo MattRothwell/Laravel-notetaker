@@ -36,12 +36,13 @@ class ModuleController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create(Request $request)
     {
+        $curCourse = request()->segment(2);
         $userID = Auth::id();
-        $courses = DB::table('courses')->where('userID', $userID)->first();
+        $courses = Course::where('userID', $userID)->first();
 
-        return view('add.module', ['courses' => $courses]);
+        return view('add.module', ['courses' => $courses, 'curCourse' => $curCourse]);
 
     }
 
@@ -64,7 +65,7 @@ class ModuleController extends Controller
                 ));
 
             //retrieve chosen course from form
-            $course = DB::table('courses')->where('courseName', $cName)->first();
+            $course = Course::where('courseName', $cName)->first();
             $courseID = $course->id;
             $courseName = $course->courseName;
             // Store new module information
@@ -93,8 +94,11 @@ class ModuleController extends Controller
         if (Auth::User())
         {
             $cCourse = Course::where([['courseName', $course], ['userID', Auth::id()]])->first();
+
             $cModule = Modules::where([['moduleName', $module], ['courseID', $cCourse->id]])->first();
-            $subjects = Subject::where(['courseID' => $cCourse->id], ['moduleID' => $cModule->id])->get();
+
+            $subjects = Subject::where(['moduleID' => $cModule->id])->get();
+
             return view('userdata.currentmodule', ['course' => $course, 'module' => $cModule, 'subjects' => $subjects]);
         }
         return redirect()->action('HomeController@index');

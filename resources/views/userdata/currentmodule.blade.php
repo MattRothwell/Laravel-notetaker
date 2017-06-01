@@ -7,7 +7,7 @@
 	  			<h2>{{ $module->moduleCode." | ".$module->moduleName  }}</h2>
 	  		</div>
 	  		<div class="col-sm-4 text-right">
-	  			<a href="#" class="btn btn-default btn-md"><span class="glyphicon glyphicon-cog"></span></a>
+	  			<a href="{{url('course/'.$course.'/module/'.$module->moduleName.'/edit')}}" class="btn btn-default btn-md"><span class="glyphicon glyphicon-cog"></span></a>
 	  		</div>
 		</div>
 	</div>
@@ -35,9 +35,8 @@
 			  			<ul class="dropdown">
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><span class="glyphicon glyphicon-cog"></span></span></a>
                             <ul class="dropdown-menu" role="menu">
-                                <li><a href="{{ url('user/'.Auth::user()->username.'') }}">Edit</a>
                                 </li>
-                                    <li><a href="{{url('/user') }}">Edit</a>
+                                    <li><a href="{{url('/course/'.$course.'/module/'.$module->moduleName.'/subject/'.$subject->id.'') }}">Edit</a>
                                     </li>
                                     <li>
                                         <a href="{{ url('/logout') }}"

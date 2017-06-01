@@ -1,5 +1,5 @@
 @extends('layouts.nav')
-
+@section('title', 'Home')
 @section('content')
 <div class="container">
     <div class="row">
@@ -21,8 +21,7 @@
             @if( ! empty($courses))
                 @foreach($courses as $course)
                 <tr>
-                    <td>{{ $course->courseName }}</td>
-
+                    <td><a href="{{url('course/'.$course->courseName.'') }}">{{ $course->courseName }}</a></td>
                     <td>Year: {{ $course->courseYear }}</td>
                 </tr>
                 @endforeach
@@ -33,27 +32,35 @@
 
             @if( ! empty($modules))
                 @foreach($modules as $module)
-                <tr>
-                    <td>{{ $module->moduleName }}</td>
-
-                    <td>Module Code: {{ $module->moduleCode}}</td>
-                </tr>
+                    @foreach($userCourses as $course)
+                        @if($course->id == $module->courseID)
+                            <tr>
+                                <td><a href="{{url('course/'.$course->courseName.'/module/'.$module->moduleName.'') }}">{{ $module->moduleName  }}</a></td>
+                                <td>Module Code: {{ $module->moduleCode}}</td>
+                            </tr>
+                            @else
+                        @endif
+                    @endforeach
                 @endforeach
             @else
             <p> empty module </p>
-             @endif
+            @endif
 
             @if( ! empty($subjects))
                 @foreach($subjects as $subject)
-                <tr>
-                    <td>{{ $subject->subjectTitle }}</td>
-
-                    <td>{{ $subject->subjectType }}</td>
-                </tr>
+                    @foreach($modID as $module)
+                        @foreach($userCourses as $course)
+                            @if($subject->courseID == $course->id && $subject->moduleID == $module->id)
+                                <tr>
+                                    <td><a href="{{url('course/'.$course->courseName.'/module/'.$module->moduleName.'') }}">{{ $subject->subjectTitle  }}</a></td>
+                                    <td>{{ $subject->subjectType }}</td>
+                                </tr>
+                            @endif
+                        @endforeach     
+                    @endforeach
                 @endforeach
             @else
-            <p> empty subjects </p>
-            
+                <p> empty subjects </p>
             @endif
             </tbody>
         </table>

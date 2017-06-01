@@ -179,7 +179,6 @@ class UserController extends Controller
 
     public function colleagues(Request $request)
     {
-        echo 'find colleagues';
         $search = $request->get('search', ''); //<-- we use global request to get the param of URI
         $users = User::SearchByKeyword($search)->get();
         return view('user.colleagues', ['users' => $users]);
